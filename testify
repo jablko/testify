@@ -1,21 +1,5 @@
 #!/usr/bin/env python
 
 import sys, testify
-from copy import copy
 
-saveConfig = copy(testify.config)
-testify.config = { 'count': 0, 'test': [] }
-
-execfile(sys.argv[1], { '__file__': sys.argv[1] })
-
-try:
-  if testify.config['expect'] != testify.config['count']:
-    print 'FAIL %s %s' % (testify.config['expect'], testify.config['count'])
-
-except KeyError:
-  pass
-
-for item in testify.config['test']:
-  item()
-
-testify.config = saveConfig
+testify.test(lambda: execfile(sys.argv[1], { '__file__': sys.argv[1] }))

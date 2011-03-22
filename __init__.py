@@ -1,10 +1,7 @@
 __all__ = ['equal', 'expect', 'ok', 'test']
 
-# Workaround, http://www.python.org/dev/peps/pep-3130/
-config = { 'count': 0, 'test': [] }
-
 def equal(actual, expect):
-  config['count'] += 1
+  current.count += 1
 
   condition = expect == actual
 
@@ -13,10 +10,10 @@ def equal(actual, expect):
   return condition
 
 def expect(count):
-  config['expect'] = count
+  current.expect = count
 
 def ok(*args):
-  config['count'] += 1
+  current.count += 1
 
   try:
     condition, actual = args
@@ -28,7 +25,41 @@ def ok(*args):
 
   return condition
 
-def test(decorated):
-  config['test'].append(decorated)
+class test:
+  def __init__(self, decorated):
 
-  return decorated
+    # Module scope?
+    global current
+
+    self.count = 0
+
+    try:
+      self.parent = current
+
+    except NameError:
+      pass
+
+    current = self
+
+    decorated()
+
+    try:
+      if self.expect != self.count:
+        print 'FAIL %s %s' % (self.expect, self.count)
+
+    except AttributeError:
+      pass
+
+    try:
+      current = self.parent
+
+    # We're still current if we've no parrent
+
+    # TODO Correct?
+    except AttributeError:
+      pass
+
+# Enables test scripts without harness, except "expect" verification
+
+# TODO Drop?
+test(lambda: None)
