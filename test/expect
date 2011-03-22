@@ -4,41 +4,52 @@ import os, sys
 from StringIO import StringIO
 from testify import *
 
-expect(3)
-
 os.chdir(os.path.dirname(__file__))
-sys.argv = [sys.argv[0], 'data/expectPass']
 
-stdout = StringIO()
-sys.stdout = stdout
+@test
+def expectPass():
+  expect(1)
 
-execfile('../testify', {})
+  sys.argv = [sys.argv[0], 'data/expectPass']
 
-sys.stdout = sys.__stdout__
+  stdout = StringIO()
+  sys.stdout = stdout
 
-equal('''PASS
+  execfile('../testify', {})
+
+  sys.stdout = sys.__stdout__
+
+  equal('''PASS
 ''', stdout.getvalue())
 
-sys.argv = [sys.argv[0], 'data/expectFail']
+@test
+def expectFail():
+  expect(1)
 
-stdout = StringIO()
-sys.stdout = stdout
+  sys.argv = [sys.argv[0], 'data/expectFail']
 
-execfile('../testify', {})
+  stdout = StringIO()
+  sys.stdout = stdout
 
-sys.stdout = sys.__stdout__
+  execfile('../testify', {})
 
-equal('''FAIL "Not" "Equal"
+  sys.stdout = sys.__stdout__
+
+  equal('''FAIL "Not" "Equal"
 ''', stdout.getvalue())
 
-sys.argv = [sys.argv[0], 'data/notExpect']
+@test
+def notExpect():
+  expect(1)
 
-stdout = StringIO()
-sys.stdout = stdout
+  sys.argv = [sys.argv[0], 'data/notExpect']
 
-execfile('../testify', {})
+  stdout = StringIO()
+  sys.stdout = stdout
 
-sys.stdout = sys.__stdout__
+  execfile('../testify', {})
 
-equal('''FAIL 1 0
+  sys.stdout = sys.__stdout__
+
+  equal('''FAIL 1 0
 ''', stdout.getvalue())
