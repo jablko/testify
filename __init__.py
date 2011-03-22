@@ -1,3 +1,5 @@
+import functools
+
 __all__ = ['equal', 'expect', 'ok', 'test']
 
 def equal(actual, expect):
@@ -30,6 +32,8 @@ class test:
 
     # Module scope?
     global current
+
+    functools.update_wrapper(self, decorated)
 
     self.count = 0
 
