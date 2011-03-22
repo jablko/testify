@@ -2,7 +2,7 @@
 
 import os, sys
 from StringIO import StringIO
-from testify import equal, expect, ok, test
+from testify import *
 
 expect(3)
 

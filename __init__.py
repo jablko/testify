@@ -1,3 +1,5 @@
+__all__ = ['equal', 'expect', 'ok', 'test']
+
 # Workaround, http://www.python.org/dev/peps/pep-3130/
 config = { 'count': 0, 'test': [] }
 

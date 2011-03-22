@@ -1,5 +1,5 @@
 #!/usr/bin/env python
 
-from testify import equal, expect, ok, test
+from testify import *
 
 expect(1)
