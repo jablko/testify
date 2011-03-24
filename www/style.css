@@ -9,6 +9,13 @@ pre
   font-family: Monaco, Courier New;
 }
 
+em
+{
+  color: #000;
+  font-style: normal;
+  font-weight: bolder;
+}
+
 h1
 {
   display: inline;
@@ -126,14 +133,10 @@ pre .typ
   vertical-align: central;
 }
 
-#main
+#page
 {
   width: 768px;
   margin-left: auto;
   margin-right: auto;
-}
-
-#page
-{
-  margin-left: 64px;
+  padding-left: 64px;
 }
