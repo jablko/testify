@@ -16,15 +16,16 @@ em
   font-weight: bolder;
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6
+h
 {
   color: #000;
+  font-size: 1.5em;
   font-weight: inherit;
+}
+
+section section h
+{
+  font-size: 1.2em;
 }
 
 html
@@ -121,7 +122,7 @@ pre .typ
   vertical-align: central;
 }
 
-#header h1
+#header h
 {
   display: inline;
   font-size: 4em;

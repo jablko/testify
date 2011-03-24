@@ -41,11 +41,14 @@
     <div id="header">
       <img src="http://upload.wikimedia.org/wikipedia/en/thumb/b/ba/Testify.jpg/220px-Testify.jpg" />
 
-      <h1>Testify</h1>
+      <h>Testify</h>
     </div>
 
-    <p>Testify is a software testing library that you don't need to learn, so you can write tests sooner. You don't need to learn Testify because a test can be *any* script - you don't even need to import Testify!</p>
-    <pre>
+    <section>
+      <h>What is it?</h>
+
+      <p>Testify is a software testing library that you don't need to learn, so you can write tests sooner. You don't need to learn Testify because a test can be *any* script - you don't even need to import Testify!</p>
+      <pre>
 <code class="prettyprint">from mything import awesome
 
 widget = awesome.Widget('This is only a test')
@@ -53,42 +56,25 @@ widget = awesome.Widget('This is only a test')
 print 'Cool, it works!' if 'What I expected' == widget.throb() else 'Fail, bummer'</code>
 </pre>
 
-    <div class="download">
-      <a href="https://github.com/jablko/testify">Get Testify</a>
-    </div>
+      <div class="download">
+        <a href="https://github.com/jablko/testify">Get Testify</a>
+      </div>
 
-    <p>Other software testing tools impose a bunch of structure on tests, which is important in the long run for maintaining large suites of tests. But up front I never understood,</p>
+      <section>
+        <p>Testify provides some utilities,</p>
 
-    <ol>
-      <li>What all the structure means</li>
+        <ul>
+          <li><code class="prettyprint">ok()</code> - something that was expected actually happened</li>
 
-      <li>How my tests fit this <a href="http://en.wikipedia.org/wiki/Procrustes#Contemporary_usage">Procrustean bed</a> - I spent more time thinking about what tests these tools promote, instead of what tests actually build confidence in my code</li>
-    </ol>
+          <li><code class="prettyprint">ok(condition, actual)</code> - fail if condition is false and print the actual value</li>
 
-    <p>Time learning and adopting some tool is totally justified if a project survives to maturity, but investing time up front could be a big waste otherwise. Focussing on tools up front is just one more distraction from focussing on releasing the absolute necessary features of a project</p>
+          <li><code class="prettyprint">equal(actual, expect)</code> - fail if actual value not equal to expected value and print both values</li>
 
-    <p>First workaround: Write tests in prose, as I spot needs for them, and automate them with tools later. Certainly better than no tests at all - but not much better because they must be run by hand and so rarely do get run. And they *never* get around to being implemented with tools</p>
+          <li><code class="prettyprint">expect(count)</code> - expect so many assertions and fail if fewer or more are actually executed</li>
+        </ul>
 
-    <p>Solution? Abandon tools - write automated tests however makes sense</p>
-
-    <p>Testify's target audience is anyone who's more productive hacking their own tools than finding and adopting existing tools. Hence no one will use Testify because it's target audience is busy hacking their own tools. Testify is Yet Another Software Testing Tool - it probably already exists but I didn't search hard</p>
-
-    <p>Testify is inspired by <a href="http://docs.jquery.com/Qunit">QUnit</a> and <a href="http://en.wikipedia.org/wiki/Lime_%28software%29">lime</a>, wich also impose minimal structure on tests</p>
-
-    <p>Testify provides some utilities,</p>
-
-    <ul>
-      <li><code class="prettyprint">ok()</code> - something that was expected actually happened</li>
-
-      <li><code class="prettyprint">ok(condition, actual)</code> - fail if condition is false and print the actual value</li>
-
-      <li><code class="prettyprint">equal(actual, expect)</code> - fail if actual value not equal to expected value and print both values</li>
-
-      <li><code class="prettyprint">expect(count)</code> - expect so many assertions and fail if fewer or more are actually executed</li>
-    </ul>
-
-    <h3>Example</h3>
-    <pre>
+        <h>Example</h>
+        <pre>
 <code class="prettyprint">from mything import awesome
 from testify import *
 
@@ -98,9 +84,10 @@ widget = awesome.Widget('This is only a test')
 
 equal(widget.throb(), 'What I expected')</code>
 </pre>
+      </section>
 
-    <p>Testify can also help add some structure when you're ready for it,</p>
-    <pre>
+      <p>Testify can also help add some structure when you're ready for it,</p>
+      <pre>
 <code class="prettyprint">from mything import awesome
 from testify import *
 
@@ -122,6 +109,29 @@ def blowUp():
   except awesome.Error:
     ok()</code>
 </pre>
+    </section>
+
+    <section>
+      <h>Why is it?</h>
+
+      <p>Other software testing tools impose a bunch of structure on tests, which is important in the long run for maintaining large suites of tests. But up front I never understood,</p>
+
+      <ol>
+        <li>What all the structure means</li>
+
+        <li>How my tests fit this <a href="http://en.wikipedia.org/wiki/Procrustes#Contemporary_usage">Procrustean bed</a> - I spent more time thinking about what tests these tools promote, instead of what tests actually build confidence in my code</li>
+      </ol>
+
+      <p>Time learning and adopting some tool is totally justified if a project survives to maturity, but investing time up front could be a big waste otherwise. Focussing on tools up front is just one more distraction from focussing on releasing the absolute necessary features of a project</p>
+
+      <p>First workaround: Write tests in prose, as I spot needs for them, and automate them with tools later. Certainly better than no tests at all - but not much better because they must be run by hand and so rarely do get run. And they *never* get around to being implemented with tools</p>
+
+      <p>Solution? Abandon tools - write automated tests however makes sense</p>
+
+      <p>Testify's target audience is anyone who's more productive hacking their own tools than finding and adopting existing tools. Hence no one will use Testify because it's target audience is busy hacking their own tools. Testify is Yet Another Software Testing Tool - it probably already exists but I didn't search hard</p>
+
+      <p>Testify is inspired by <a href="http://docs.jquery.com/Qunit">QUnit</a> and <a href="http://en.wikipedia.org/wiki/Lime_%28software%29">lime</a>, wich also impose minimal structure on tests</p>
+    </section>
 
     <div id="disqus_thread"></div><script type="text/javascript">
 //<![CDATA[
