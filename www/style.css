@@ -12,7 +12,7 @@ pre
 h1
 {
   display: inline;
-  font-size: 3em;
+  font-size: 4em;
   margin-left: 16px;
 }
 
@@ -93,9 +93,9 @@ pre .typ
   background: -moz-linear-gradient(#8c3, #491);
   background: -webkit-linear-gradient(#8c3, #491);
 
-  border-radius: .5em;
-  -moz-border-radius: .5em;
-  -webkit-border-radius: .5em;
+  border-radius: .2em;
+  -moz-border-radius: .2em;
+  -webkit-border-radius: .2em;
 
   box-shadow: 0 4px rgba(0, 0, 0, .1), inset 0 -4px rgba(0, 0, 0, .1);
   -moz-box-shadow: 0 4px rgba(0, 0, 0, .1), inset 0 -4px rgba(0, 0, 0, .1);
