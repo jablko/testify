@@ -16,13 +16,6 @@ em
   font-weight: bolder;
 }
 
-h1
-{
-  display: inline;
-  font-size: 4em;
-  margin-left: 16px;
-}
-
 h1,
 h2,
 h3,
@@ -30,7 +23,7 @@ h4,
 h5,
 h6
 {
-  color: #000000;
+  color: #000;
   font-weight: inherit;
 }
 
@@ -39,11 +32,6 @@ html
   color: #222;
   font-family: Georgia, Times New Roman, Times, serif;
   line-height: 1.5;
-}
-
-img
-{
-  margin-left: -64px;
 }
 
 pre
@@ -131,6 +119,18 @@ pre .typ
   content: url(http://mozcom-cdn.mozilla.net/img/firefox/download-arrow.png);
   margin-right: .3em;
   vertical-align: central;
+}
+
+#header h1
+{
+  display: inline;
+  font-size: 4em;
+  margin-left: 16px;
+}
+
+#header img
+{
+  margin-left: -64px;
 }
 
 #page
