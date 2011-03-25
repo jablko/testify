@@ -51,10 +51,43 @@
 
       $('section:not([id])').attr('id', function ()
         {
-          return slugify($('h', this).not($('section h', this)).text());
+          return slugify($('h', this)
+            .not($('section h', this))
+            .text());
         });
 
-      location = location;
+      $(window).bind('hashchange', function ()
+        {
+          var $target = $(':target');
+          if (!$target.length)
+          {
+            $target = $('section:first');
+          }
+
+          $('section:not(section section)')
+            .not($target)
+            .hide();
+
+          $target.show();
+        });
+
+      location.hash = location.hash;
+
+      $(window).trigger('hashchange');
+
+      $('section:has(+ section):not(section + section)').each(function ()
+        {
+          var first = this;
+
+          $('+ section', this)
+            .andSelf()
+            .each(function ()
+              {
+                $('<a href="#' + this.id + '"/>')
+                  .append($('h', this).not($('section h', this)))
+                  .insertBefore(first);
+              });
+        });
     });
   //]]>
   </script>
