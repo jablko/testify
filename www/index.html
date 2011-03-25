@@ -15,6 +15,7 @@
     {
       prettyPrint();
 
+      // Emphasis
       $(':not(textarea)')
         .contents()
         .filter(function ()
@@ -29,6 +30,31 @@
               .replace(/>/g, '&gt;')
               .replace(/\*\w(?:[\w\s]*\w)?\*/g, '<em>$&</em>');
           });
+
+      // Slugify
+
+      function slugify(value)
+      {
+        value = value.toLowerCase();
+
+        // Allow only digits, letters, and dashes.  Replace sequences of other
+        // characters with dash
+        value = value.replace(/[^0-9a-z]+/g, '-');
+
+        // Drop (English) articles
+        value = ('-' + value + '-').replace(/-(?:a|an|the)-/g, '-');
+
+        value = value.replace(/^-+|-+$/g, '');
+
+        return value;
+      }
+
+      $('section:not([id])').attr('id', function ()
+        {
+          return slugify($('h', this).not($('section h', this)).text());
+        });
+
+      location = location;
     });
   //]]>
   </script>
