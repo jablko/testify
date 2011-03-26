@@ -160,18 +160,23 @@ section section h
   -moz-border-radius: .5em .5em 0 0;
   -webkit-border-radius: .5em .5em 0 0;
 
-  bottom: -1px;
-  display: inline-block;
+  /* (.2em + 1.2 * 1.5em)
+   * - (1.2 * .2em + 1.2 * 1.2 * 1.5em) */
+  bottom: -.4em;
+
+  color: #222;
+  display: block;
+  float: left;
   margin: 0 .4em;
   margin-left: 64px;
   position: relative;
-  padding: .2em 1em 0;
+  padding: .2em 1em .15em;
   text-decoration: none;
 }
 
 .tab h
 {
-  color: #222;
+  color: inherit;
   font-size: 1.2em;
 }
 
@@ -180,19 +185,36 @@ section section h
   margin: 0 .4em;
 }
 
+.tab:hover
+{
+  /* (.2em + 1.2 * 1.5em + .15em)
+   * - (1.2 * .2em + 1.2 * 1.2 * 1.5em) */
+  bottom: -.25em;
+
+  color: #000;
+
+  transition: .2s;
+  -moz-transition: .2s;
+  -webkit-transition: .2s;
+}
+
 .tab.active
 {
   background: #fff;
   background: -moz-linear-gradient(#ddd, #eee);
   background: -webkit-linear-gradient(#ddd, #eee);
 
-  font-size: 1.2em;
-  z-index: 1;
-}
-
-.tab.active h
-{
+  bottom: -1px;
   color: #000;
+  font-size: 1.2em;
+  padding-bottom: 0;
+
+  /* Firefox ignores "0" */
+  transition: 0s;
+  -moz-transition: 0s;
+  -webkit-transition: 0s;
+
+  z-index: 1;
 }
 
 #header
@@ -204,7 +226,7 @@ section section h
 {
   display: inline;
   font-size: 4em;
-  margin-left: 16px;
+  margin-left: .25em; /* 1em / 4 */
 }
 
 #header img
