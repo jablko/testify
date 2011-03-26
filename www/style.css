@@ -3,10 +3,9 @@ body
   margin-top: 0;
 }
 
-code,
-pre
+code
 {
-  font-family: Monaco, Courier New;
+  font: 15.2px Monaco, Courier New;
 }
 
 em
@@ -23,16 +22,16 @@ h
   font-weight: inherit;
 }
 
-section section h
-{
-  font-size: 1.2em;
-}
-
 html
 {
   color: #222;
   font-family: Georgia, Times New Roman, Times, serif;
   line-height: 1.5;
+}
+
+p
+{
+  margin: 1.5em 0;
 }
 
 pre
@@ -44,7 +43,6 @@ pre
   -webkit-border-radius: .2em;
 
   color: #fff;
-  font-size: .95em;
   padding: 1em;
 }
 
@@ -78,14 +76,26 @@ pre .typ
   color: #c4c;
 }
 
-.download
+section
 {
-  padding: 2em 0;
+  margin-left: -1em;
+  padding: 0 1em;
 }
 
-.download :link,
-.download :visited
+section section
 {
+  margin: 0;
+  padding: 0;
+}
+
+section section h
+{
+  font-size: 1.2em;
+}
+
+.download
+{
+  background: #8c3;
   background: -moz-linear-gradient(#8c3, #491);
   background: -webkit-linear-gradient(#8c3, #491);
 
@@ -99,12 +109,12 @@ pre .typ
 
   color: #fff;
   font-size: 1.4em;
+  margin: 2em 0;
   padding: .4em 1.4em;
   text-decoration: none;
 }
 
-.download :active,
-.download :hover
+.download:hover
 {
   box-shadow: 0 4px rgba(0, 0, 0, .1), inset 0 -4px rgba(0, 0, 0, .1), inset 0 0 1.5em rgba(255, 255, 255, .3);
   -moz-box-shadow: 0 4px rgba(0, 0, 0, .1), inset 0 -4px rgba(0, 0, 0, .1), inset 0 0 1.5em rgba(255, 255, 255, .3);
@@ -115,11 +125,78 @@ pre .typ
   -webkit-transition: .2s;
 }
 
-.download :before
+.download:before
 {
   content: url(http://mozcom-cdn.mozilla.net/img/firefox/download-arrow.png);
   margin-right: .3em;
   vertical-align: central;
+}
+
+.pane
+{
+  background: -moz-linear-gradient(#eee, #fff);
+  background: -webkit-linear-gradient(#eee, #fff);
+
+  border-top: thin solid #ccc;
+
+  box-shadow: 0 -.2em .2em rgba(0, 0, 0, .1);
+  -moz-box-shadow: 0 -.2em .2em rgba(0, 0, 0, .1);
+  -webkit-box-shadow: 0 -.2em .2em rgba(0, 0, 0, .1);
+
+  clear: both;
+  position: relative;
+}
+
+.tab
+{
+  background: #eee;
+  background: -moz-linear-gradient(#fff, #eee);
+  background: -webkit-linear-gradient(#fff, #eee);
+
+  border: thin solid #ccc;
+  border-bottom: 0;
+
+  border-radius: .5em .5em 0 0;
+  -moz-border-radius: .5em .5em 0 0;
+  -webkit-border-radius: .5em .5em 0 0;
+
+  bottom: -1px;
+  display: block;
+  float: left;
+  margin: 0 .5em;
+  margin-left: 64px;
+  position: relative;
+  padding: .4em 1em 0;
+  text-decoration: none;
+}
+
+.tab h
+{
+  color: #222;
+}
+
+.tab + .tab
+{
+  margin: 0 .5em;
+}
+
+.tab.active
+{
+  background: #fff;
+  background: -moz-linear-gradient(#ddd, #eee);
+  background: -webkit-linear-gradient(#ddd, #eee);
+
+  z-index: 1;
+}
+
+.tab.active h
+{
+  color: #000;
+}
+
+#header
+{
+  margin-bottom: 2em;
 }
 
 #header h
@@ -136,7 +213,7 @@ pre .typ
 
 #page
 {
-  width: 768px;
+  width: 784px;
   margin-left: auto;
   margin-right: auto;
   padding-left: 64px;
