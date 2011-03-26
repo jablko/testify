@@ -161,23 +161,23 @@ section section h
   -webkit-border-radius: .5em .5em 0 0;
 
   bottom: -1px;
-  display: block;
-  float: left;
-  margin: 0 .5em;
+  display: inline-block;
+  margin: 0 .4em;
   margin-left: 64px;
   position: relative;
-  padding: .4em 1em 0;
+  padding: .2em 1em 0;
   text-decoration: none;
 }
 
 .tab h
 {
   color: #222;
+  font-size: 1.2em;
 }
 
 .tab + .tab
 {
-  margin: 0 .5em;
+  margin: 0 .4em;
 }
 
 .tab.active
@@ -186,6 +186,7 @@ section section h
   background: -moz-linear-gradient(#ddd, #eee);
   background: -webkit-linear-gradient(#ddd, #eee);
 
+  font-size: 1.2em;
   z-index: 1;
 }
 
