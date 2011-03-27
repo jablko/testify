@@ -93,43 +93,87 @@ section section h
   font-size: 1.2em;
 }
 
+.active.tab,
+.active.tab:hover
+{
+  background: #fff;
+  background: -moz-linear-gradient(#ddd, #eee);
+  background: -webkit-linear-gradient(#ddd, #eee);
+
+  bottom: -1px;
+  color: #000;
+  font-size: 1.2em;
+  padding-bottom: 0;
+
+  /* Firefox ignores "0" */
+  transition: 0s;
+  -moz-transition: 0s;
+  -webkit-transition: 0s;
+
+  z-index: 1;
+}
+
 .download
+{
+  display: block;
+  margin: 2.5em 0;
+}
+
+.download,
+.download.tab,
+.download.tab:hover
+{
+  color: #fff;
+}
+
+.download:after
+{
+  clear: both;
+  content: '.';
+  display: block;
+  height: 0;
+  visibility: hidden;
+}
+
+.download > *
+{
+  border-radius: .5em;
+  -moz-border-radius: .5em;
+  -webkit-border-radius: .5em;
+
+  display: block;
+  float: left;
+  font-size: 1.4em;
+  margin: 0;
+  padding: .2em 1.2em;
+}
+
+.download > *,
+.download.tab
 {
   background: #8c3;
   background: -moz-linear-gradient(#8c3, #491);
   background: -webkit-linear-gradient(#8c3, #491);
-
-  border-radius: .2em;
-  -moz-border-radius: .2em;
-  -webkit-border-radius: .2em;
-
-  box-shadow: 0 4px rgba(0, 0, 0, .1), inset 0 -4px rgba(0, 0, 0, .1);
-  -moz-box-shadow: 0 4px rgba(0, 0, 0, .1), inset 0 -4px rgba(0, 0, 0, .1);
-  -webkit-box-shadow: 0 4px rgba(0, 0, 0, .1), inset 0 -4px rgba(0, 0, 0, .1);
-
-  color: #fff;
-  font-size: 1.4em;
-  margin: 2em 0;
-  padding: .4em 1.4em;
-  text-decoration: none;
 }
 
-.download:hover
-{
-  box-shadow: 0 4px rgba(0, 0, 0, .1), inset 0 -4px rgba(0, 0, 0, .1), inset 0 0 1.5em rgba(255, 255, 255, .3);
-  -moz-box-shadow: 0 4px rgba(0, 0, 0, .1), inset 0 -4px rgba(0, 0, 0, .1), inset 0 0 1.5em rgba(255, 255, 255, .3);
-  -webkit-box-shadow: 0 4px rgba(0, 0, 0, .1), inset 0 -4px rgba(0, 0, 0, .1), inset 0 0 1.5em rgba(255, 255, 255, .3);
-
-  transition: .2s;
-  -moz-transition: .2s;
-  -webkit-transition: .2s;
-}
-
-.download:before
+.download > :before
 {
   content: url(http://mozcom-cdn.mozilla.net/img/firefox/download-arrow.png);
   margin-right: .3em;
   vertical-align: central;
+}
+
+.download.tab,
+.tab + .download.tab
+{
+  border-color: #8c3;
+  float: right;
+  margin-right: 64px;
+}
+
+.download.tab > *
+{
+  padding: 0;
 }
 
 .pane
@@ -170,11 +214,11 @@ section section h
   margin: 0 .4em;
   margin-left: 64px;
   position: relative;
-  padding: .2em 1em .15em;
+  padding: .2em 1.2em .15em;
   text-decoration: none;
 }
 
-.tab h
+.tab > *
 {
   color: inherit;
   font-size: 1.2em;
@@ -196,25 +240,6 @@ section section h
   transition: .2s;
   -moz-transition: .2s;
   -webkit-transition: .2s;
-}
-
-.tab.active
-{
-  background: #fff;
-  background: -moz-linear-gradient(#ddd, #eee);
-  background: -webkit-linear-gradient(#ddd, #eee);
-
-  bottom: -1px;
-  color: #000;
-  font-size: 1.2em;
-  padding-bottom: 0;
-
-  /* Firefox ignores "0" */
-  transition: 0s;
-  -moz-transition: 0s;
-  -webkit-transition: 0s;
-
-  z-index: 1;
 }
 
 #header
