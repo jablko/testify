@@ -19,7 +19,8 @@ def expectPass():
 
   sys.stdout = sys.__stdout__
 
-  equal('''PASS
+  equal('''1..1
+ok 1
 ''', stdout.getvalue())
 
 @test
@@ -35,7 +36,8 @@ def expectFail():
 
   sys.stdout = sys.__stdout__
 
-  equal('''FAIL "Not" "Equal"
+  equal('''1..1
+not ok 1 "Not" "Equal"
 ''', stdout.getvalue())
 
 @test
@@ -51,5 +53,6 @@ def notExpect():
 
   sys.stdout = sys.__stdout__
 
-  equal('''FAIL 1 0
+  equal('''1..1
+FAIL 1 0
 ''', stdout.getvalue())

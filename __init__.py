@@ -7,12 +7,14 @@ def equal(actual, expect):
 
   condition = expect == actual
 
-  print 'PASS' if condition else 'FAIL "%s" "%s"' % (actual, expect)
+  print 'ok %s' % current.count if condition else 'not ok %s "%s" "%s"' % (current.count, actual, expect)
 
   return condition
 
 def expect(count):
   current.expect = count
+
+  print '1..%s' % count
 
 def ok(*args):
   current.count += 1
@@ -23,7 +25,7 @@ def ok(*args):
   except ValueError:
     condition = True
 
-  print 'PASS' if condition else 'FAIL "%s"' % actual
+  print 'ok %s' % current.count if condition else 'not ok %s "%s"' % (current.count, actual)
 
   return condition
 
@@ -63,7 +65,7 @@ class test:
     except AttributeError:
       pass
 
-# Enables test scripts without harness, except "expect" verification
+# Enables test scripts without runner, except "expect" verification
 
 # TODO Drop?
 test(lambda: None)

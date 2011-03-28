@@ -16,6 +16,6 @@ execfile('../testify', {})
 
 sys.stdout = sys.__stdout__
 
-equal('''PASS
-FAIL "Not" "Equal"
+equal('''ok 1
+not ok 2 "Not" "Equal"
 ''', stdout.getvalue())
