@@ -8,12 +8,13 @@ from testify import *
 def okTrue():
   expect(1)
 
-  stdout = StringIO()
-  sys.stdout = stdout
+  save = sys.stdout
+  sys.stdout = StringIO()
 
   test(lambda: ok(True))
 
-  sys.stdout = sys.__stdout__
+  stdout = sys.stdout
+  sys.stdout = save
 
   equal('''ok 1
 ''', stdout.getvalue())
@@ -22,12 +23,13 @@ def okTrue():
 def okFalse():
   expect(1)
 
-  stdout = StringIO()
-  sys.stdout = stdout
+  save = sys.stdout
+  sys.stdout = StringIO()
 
   test(lambda: ok(True))
 
-  sys.stdout = sys.__stdout__
+  stdout = sys.stdout
+  sys.stdout = save
 
   equal('''not ok 1
 ''', stdout.getvalue())

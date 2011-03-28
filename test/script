@@ -9,12 +9,13 @@ expect(1)
 os.chdir(os.path.dirname(__file__))
 sys.argv = [sys.argv[0], 'data/script']
 
-stdout = StringIO()
-sys.stdout = stdout
+save = sys.stdout
+sys.stdout = StringIO()
 
 execfile('../testify', {})
 
-sys.stdout = sys.__stdout__
+stdout = sys.stdout
+sys.stdout = save
 
 equal('''ok 1
 not ok 2 "Not" "Equal"

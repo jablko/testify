@@ -12,12 +12,13 @@ def expectPass():
 
   sys.argv = [sys.argv[0], 'data/expectPass']
 
-  stdout = StringIO()
-  sys.stdout = stdout
+  save = sys.stdout
+  sys.stdout = StringIO()
 
   execfile('../testify', {})
 
-  sys.stdout = sys.__stdout__
+  stdout = sys.stdout
+  sys.stdout = save
 
   equal('''1..1
 ok 1
@@ -29,12 +30,13 @@ def expectFail():
 
   sys.argv = [sys.argv[0], 'data/expectFail']
 
-  stdout = StringIO()
-  sys.stdout = stdout
+  save = sys.stdout
+  sys.stdout = StringIO()
 
   execfile('../testify', {})
 
-  sys.stdout = sys.__stdout__
+  stdout = sys.stdout
+  sys.stdout = save
 
   equal('''1..1
 not ok 1 "Not" "Equal"
@@ -46,12 +48,13 @@ def notExpect():
 
   sys.argv = [sys.argv[0], 'data/notExpect']
 
-  stdout = StringIO()
-  sys.stdout = stdout
+  save = sys.stdout
+  sys.stdout = StringIO()
 
   execfile('../testify', {})
 
-  sys.stdout = sys.__stdout__
+  stdout = sys.stdout
+  sys.stdout = save
 
   equal('''1..1
 FAIL 1 0

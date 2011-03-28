@@ -9,12 +9,13 @@ expect(1)
 os.chdir(os.path.dirname(__file__))
 sys.argv = [sys.argv[0], 'data/decoratedExpect']
 
-stdout = StringIO()
-sys.stdout = stdout
+save = sys.stdout
+sys.stdout = StringIO()
 
 execfile('../testify', {})
 
-sys.stdout = sys.__stdout__
+stdout = sys.stdout
+sys.stdout = save
 
 equal('''1..1
 ok 1
