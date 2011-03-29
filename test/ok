@@ -26,7 +26,7 @@ def okFalse():
   save = sys.stdout
   sys.stdout = StringIO()
 
-  test(lambda: ok(True))
+  test(lambda: ok(False))
 
   stdout = sys.stdout
   sys.stdout = save

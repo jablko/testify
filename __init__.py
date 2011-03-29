@@ -1,4 +1,4 @@
-import functools
+import functools, traceback
 
 __all__ = ['equal', 'expect', 'ok', 'test']
 
@@ -6,8 +6,13 @@ def equal(actual, expect):
   current.count += 1
 
   condition = expect == actual
+  if condition:
+    print 'ok %s' % current.count
 
-  print 'ok %s' % current.count if condition else 'not ok %s "%s" "%s"' % (current.count, actual, expect)
+  else:
+    print 'not ok %s "%s" "%s"' % (current.count, actual, expect)
+
+    traceback.print_stack()
 
   return condition
 
@@ -16,16 +21,22 @@ def expect(count):
 
   print '1..%s' % count
 
-def ok(*args):
+def ok(condition, *args):
   current.count += 1
 
-  try:
-    condition, actual = args
+  if condition:
+    print 'ok %s' % current.count
 
-  except ValueError:
-    condition = True
+  else:
+    try:
+      (actual,) = args
 
-  print 'ok %s' % current.count if condition else 'not ok %s "%s"' % (current.count, actual)
+      print 'not ok %s "%s"' % (current.count, actual)
+
+    except ValueError:
+      print 'not ok %s' % current.count
+
+    traceback.print_stack()
 
   return condition
 
