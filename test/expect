@@ -1,61 +1,53 @@
 #!/usr/bin/env python
 
-import os, sys
+import os, re, sys
 from StringIO import StringIO
 from testify import *
 
+traceback = '''(?:  File ".+", line \d+, in .+
+    .+
+)+'''
+
 os.chdir(os.path.dirname(__file__))
 
-@test
-def expectPass():
-  expect(1)
+sys.argv = [sys.argv[0], 'data/expectPass']
 
-  sys.argv = [sys.argv[0], 'data/expectPass']
+save = sys.stdout
+sys.stdout = StringIO()
 
-  save = sys.stdout
-  sys.stdout = StringIO()
+execfile('../testify', {})
 
-  execfile('../testify', {})
+stdout = sys.stdout
+sys.stdout = save
 
-  stdout = sys.stdout
-  sys.stdout = save
-
-  equal('''1..1
+equal('''1..1
 ok 1
 ''', stdout.getvalue())
 
-@test
-def expectFail():
-  expect(1)
+sys.argv = [sys.argv[0], 'data/expectFail']
 
-  sys.argv = [sys.argv[0], 'data/expectFail']
+save = sys.stdout
+sys.stdout = StringIO()
 
-  save = sys.stdout
-  sys.stdout = StringIO()
+execfile('../testify', {})
 
-  execfile('../testify', {})
+stdout = sys.stdout
+sys.stdout = save
 
-  stdout = sys.stdout
-  sys.stdout = save
-
-  equal('''1..1
+ok(re.match('''1..1
 not ok 1 "Not" "Equal"
-''', stdout.getvalue())
+''' + traceback, stdout.getvalue()), stdout.getvalue())
 
-@test
-def notExpect():
-  expect(1)
+sys.argv = [sys.argv[0], 'data/notExpect']
 
-  sys.argv = [sys.argv[0], 'data/notExpect']
+save = sys.stdout
+sys.stdout = StringIO()
 
-  save = sys.stdout
-  sys.stdout = StringIO()
+execfile('../testify', {})
 
-  execfile('../testify', {})
+stdout = sys.stdout
+sys.stdout = save
 
-  stdout = sys.stdout
-  sys.stdout = save
-
-  equal('''1..1
+equal('''1..1
 FAIL 1 0
 ''', stdout.getvalue())

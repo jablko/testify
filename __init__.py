@@ -1,4 +1,4 @@
-import functools, traceback
+import functools, sys, traceback
 
 __all__ = ['equal', 'expect', 'ok', 'test']
 
@@ -12,7 +12,7 @@ def equal(actual, expect):
   else:
     print 'not ok %s "%s" "%s"' % (current.count, actual, expect)
 
-    traceback.print_stack()
+    traceback.print_stack(file=sys.stdout)
 
   return condition
 
@@ -36,7 +36,7 @@ def ok(condition, *args):
     except ValueError:
       print 'not ok %s' % current.count
 
-    traceback.print_stack()
+    traceback.print_stack(file=sys.stdout)
 
   return condition
 

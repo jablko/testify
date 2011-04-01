@@ -1,10 +1,12 @@
 #!/usr/bin/env python
 
-import os, sys
+import os, re, sys
 from StringIO import StringIO
 from testify import *
 
-expect(1)
+traceback = '''(?:  File ".+", line \d+, in .+
+    .+
+)+'''
 
 os.chdir(os.path.dirname(__file__))
 sys.argv = [sys.argv[0], 'data/decoratedExpect']
@@ -17,10 +19,10 @@ execfile('../testify', {})
 stdout = sys.stdout
 sys.stdout = save
 
-equal('''1..1
+ok(re.match('''1..1
 ok 1
 1..1
 not ok 1 "Not" "Equal"
-1..1
+''' + traceback + '''1..1
 FAIL 1 0
-''', stdout.getvalue())
+''', stdout.getvalue()), stdout.getvalue())
