@@ -64,6 +64,8 @@ class test:
       if self.expect != self.count:
         print 'FAIL %s %s' % (self.expect, self.count)
 
+        traceback.print_stack(file=sys.stdout)
+
     except AttributeError:
       pass
 

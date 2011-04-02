@@ -48,6 +48,6 @@ execfile('../testify', {})
 stdout = sys.stdout
 sys.stdout = save
 
-equal('''1..1
+ok(re.match('''1..1
 FAIL 1 0
-''', stdout.getvalue())
+''' + traceback, stdout.getvalue()), stdout.getvalue())
