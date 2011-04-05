@@ -13,6 +13,8 @@
 //<![CDATA[
   jQuery(function ($)
     {
+      $('code').addClass('prettyprint');
+
       prettyPrint();
 
       // Emphasis
@@ -116,7 +118,7 @@
 
       <p>Testify is a software testing library that you don't need to learn, so you can write tests sooner. You don't need to learn Testify because a test can be *any* script - you don't even need to import Testify!</p>
       <pre>
-<code class="prettyprint">from mything import awesome
+<code>from mything import awesome
 
 widget = awesome.Widget('This is only a test')
 
@@ -129,18 +131,18 @@ print 'Cool, it works!' if 'What I expected' == widget.throb() else 'Fail, bumme
         <p>Testify provides some utilities,</p>
 
         <ul>
-          <li><code class="prettyprint">ok()</code> - something that was expected actually happened</li>
+          <li><code>ok()</code> - something that was expected actually happened</li>
 
-          <li><code class="prettyprint">ok(condition, actual)</code> - fail if condition is false and print the actual value</li>
+          <li><code>ok(condition, actual)</code> - fail if condition is false and print the actual value</li>
 
-          <li><code class="prettyprint">equal(actual, expect)</code> - fail if actual value not equal to expected value and print both values</li>
+          <li><code>equal(actual, expect)</code> - fail if actual value not equal to expected value and print both values</li>
 
-          <li><code class="prettyprint">expect(count)</code> - expect so many assertions and fail if fewer or more are actually executed</li>
+          <li><code>expect(count)</code> - expect so many assertions and fail if fewer or more are actually executed</li>
         </ul>
 
         <h>Example</h>
         <pre>
-<code class="prettyprint">from mything import awesome
+<code>from mything import awesome
 from testify import *
 
 expect(1)
@@ -153,7 +155,7 @@ equal(widget.throb(), 'What I expected')</code>
 
       <p>Testify can also help add some structure when you're ready for it,</p>
       <pre>
-<code class="prettyprint">from mything import awesome
+<code>from mything import awesome
 from testify import *
 
 @test

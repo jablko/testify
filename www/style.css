@@ -46,6 +46,11 @@ pre
   padding: 1em;
 }
 
+pre .com
+{
+  color: #c4c;
+}
+
 pre .kwd
 {
   color: #06f;
@@ -73,7 +78,7 @@ pre .str
 
 pre .typ
 {
-  color: #c4c;
+  color: #f40;
 }
 
 section
@@ -267,7 +272,6 @@ section section h
 #page
 {
   width: 768px;
-  margin-left: auto;
-  margin-right: auto;
+  margin: 0 auto;
   padding-left: 64px;
 }
