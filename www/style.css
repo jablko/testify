@@ -137,15 +137,6 @@ section section h
   color: #fff;
 }
 
-.download:after
-{
-  clear: both;
-  content: '.';
-  display: block;
-  height: 0;
-  visibility: hidden;
-}
-
 .download > *
 {
   border-radius: .5em;
@@ -172,6 +163,15 @@ section section h
   content: url(http://mozcom-cdn.mozilla.net/img/firefox/download-arrow.png);
   margin-right: .3em;
   vertical-align: central;
+}
+
+.download:after
+{
+  clear: both;
+  content: '.';
+  display: block;
+  height: 0;
+  visibility: hidden;
 }
 
 .download.tab,
@@ -271,7 +271,7 @@ section section h
 
 #page
 {
-  width: 768px;
   margin: 0 auto;
   padding-left: 64px;
+  width: 768px;
 }
