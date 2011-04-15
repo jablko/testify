@@ -7,10 +7,10 @@ def equal(actual, expect):
 
   condition = expect == actual
   if condition:
-    print 'ok %s' % current.count
+    print 'ok %r' % current.count
 
   else:
-    print 'not ok %s "%s" "%s"' % (current.count, actual, expect)
+    print 'not ok %r %r %r' % (current.count, actual, expect)
 
     traceback.print_stack(file=sys.stdout)
 
@@ -19,22 +19,22 @@ def equal(actual, expect):
 def expect(count):
   current.expect = count
 
-  print '1..%s' % count
+  print '1..%r' % count
 
 def ok(condition, *args):
   current.count += 1
 
   if condition:
-    print 'ok %s' % current.count
+    print 'ok %r' % current.count
 
   else:
     try:
-      (actual,) = args
+      actual, = args
 
-      print 'not ok %s "%s"' % (current.count, actual)
+      print 'not ok %r %r' % (current.count, actual)
 
     except ValueError:
-      print 'not ok %s' % current.count
+      print 'not ok %r' % current.count
 
     traceback.print_stack(file=sys.stdout)
 
@@ -62,7 +62,7 @@ class test:
 
     try:
       if self.expect != self.count:
-        print 'FAIL %s %s' % (self.expect, self.count)
+        print 'FAIL %r %r' % (self.expect, self.count)
 
         traceback.print_stack(file=sys.stdout)
 
