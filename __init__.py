@@ -12,7 +12,7 @@ def equal(actual, expect):
   else:
     print 'not ok %r %r %r' % (current.count, actual, expect)
 
-    traceback.print_stack(file=sys.stdout)
+    traceback.print_stack(sys._getframe().f_back, file=sys.stdout)
 
   return condition
 
@@ -36,7 +36,7 @@ def ok(condition, *args):
     except ValueError:
       print 'not ok %r' % current.count
 
-    traceback.print_stack(file=sys.stdout)
+    traceback.print_stack(sys._getframe().f_back, file=sys.stdout)
 
   return condition
 
@@ -51,7 +51,7 @@ class test:
     self.count = 0
 
     try:
-      self.parent = current
+      parent = current
 
     except NameError:
       pass
@@ -64,18 +64,18 @@ class test:
       if self.expect != self.count:
         print 'FAIL %r %r' % (self.expect, self.count)
 
-        traceback.print_stack(file=sys.stdout)
+        traceback.print_stack(sys._getframe().f_back, file=sys.stdout)
 
     except AttributeError:
       pass
 
     try:
-      current = self.parent
+      current = parent
 
     # We're still current if we've no parrent
 
     # TODO Correct?
-    except AttributeError:
+    except UnboundLocalError:
       pass
 
 # Enables test scripts without runner, except "expect" verification
