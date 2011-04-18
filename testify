@@ -2,4 +2,5 @@
 
 import sys, testify
 
-testify.test(lambda: execfile(sys.argv[1], { '__file__': sys.argv[1] }))
+for path in sys.argv[1:]:
+  testify.test(lambda: execfile(path, { '__file__': path }))
