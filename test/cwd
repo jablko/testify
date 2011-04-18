@@ -1,0 +1,12 @@
+#!/usr/bin/env python
+
+import os
+from testify import *
+
+abspath = os.path.abspath(os.path.dirname(__file__))
+
+os.chdir(abspath + '/data/clean')
+
+test(lambda: os.chdir(abspath + '/data/dirty'))
+
+equal(os.getcwd(), abspath + '/data/clean')

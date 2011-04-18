@@ -1,4 +1,4 @@
-import functools, sys, traceback
+import functools, os, sys, traceback
 
 __all__ = ['equal', 'expect', 'ok', 'test']
 
@@ -50,6 +50,8 @@ class test:
 
     self.count = 0
 
+    cwd = os.getcwd()
+
     try:
       parent = current
 
@@ -77,6 +79,8 @@ class test:
     # TODO Correct?
     except UnboundLocalError:
       pass
+
+    os.chdir(cwd)
 
 # Enables test scripts without runner, except "expect" verification
 
