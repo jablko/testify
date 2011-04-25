@@ -8,24 +8,22 @@ traceback = '''(?:  File ".+", line \d+, in .+
     .+
 )+'''
 
-save = sys.stdout
+stdout = sys.stdout
 sys.stdout = StringIO()
 
 test(lambda: ok(True))
 
-stdout = sys.stdout
-sys.stdout = save
+stdout, sys.stdout = sys.stdout, stdout
 
 equal('''ok 1
 ''', stdout.getvalue())
 
-save = sys.stdout
+stdout = sys.stdout
 sys.stdout = StringIO()
 
 test(lambda: ok(False))
 
-stdout = sys.stdout
-sys.stdout = save
+stdout, sys.stdout = sys.stdout, stdout
 
 ok(re.match('''not ok 1
 ''' + traceback, stdout.getvalue()), stdout.getvalue())

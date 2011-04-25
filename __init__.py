@@ -1,4 +1,4 @@
-import functools, os, sys, traceback
+import os, sys, traceback
 
 __all__ = ['equal', 'expect', 'ok', 'test']
 
@@ -41,12 +41,10 @@ def ok(condition, *args):
   return condition
 
 class test:
-  def __init__(self, decorated):
+  def __init__(self, callable):
 
     # Module scope?
     global current
-
-    functools.update_wrapper(self, decorated)
 
     self.count = 0
 
@@ -60,7 +58,7 @@ class test:
 
     current = self
 
-    decorated()
+    callable()
 
     try:
       if self.expect != self.count:

@@ -11,13 +11,12 @@ traceback = '''(?:  File ".+", line \d+, in .+
 os.chdir(os.path.dirname(__file__))
 sys.argv = [sys.argv[0], 'data/decorated']
 
-save = sys.stdout
+stdout = sys.stdout
 sys.stdout = StringIO()
 
 execfile('../testify', {})
 
-stdout = sys.stdout
-sys.stdout = save
+stdout, sys.stdout = sys.stdout, stdout
 
 ok(re.match('''ok 1
 not ok 2 'Not' 'Equal'
