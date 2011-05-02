@@ -14,9 +14,11 @@ sys.argv = [sys.argv[0], 'data/script']
 stdout = sys.stdout
 sys.stdout = StringIO()
 
-execfile('../testify', {})
+try:
+  execfile('../testify', {})
 
-stdout, sys.stdout = sys.stdout, stdout
+finally:
+  stdout, sys.stdout = sys.stdout, stdout
 
 ok(re.match('''ok 1
 not ok 2 'Not' 'Equal'

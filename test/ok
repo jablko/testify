@@ -11,9 +11,11 @@ traceback = '''(?:  File ".+", line \d+, in .+
 stdout = sys.stdout
 sys.stdout = StringIO()
 
-test(lambda: ok(True))
+try:
+  test(lambda: ok(True))
 
-stdout, sys.stdout = sys.stdout, stdout
+finally:
+  stdout, sys.stdout = sys.stdout, stdout
 
 equal('''ok 1
 ''', stdout.getvalue())
@@ -21,9 +23,11 @@ equal('''ok 1
 stdout = sys.stdout
 sys.stdout = StringIO()
 
-test(lambda: ok(False))
+try:
+  test(lambda: ok(False))
 
-stdout, sys.stdout = sys.stdout, stdout
+finally:
+  stdout, sys.stdout = sys.stdout, stdout
 
 ok(re.match('''not ok 1
 ''' + traceback, stdout.getvalue()), stdout.getvalue())
