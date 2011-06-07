@@ -12,7 +12,7 @@ def expectPass():
 def expectFail():
   expect(1)
 
-  equal('Not', 'Equal')
+  equal('Equal', 'Not')
 
 @test
 def notExpect():

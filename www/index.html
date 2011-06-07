@@ -135,7 +135,7 @@ print 'Cool, it works!' if 'What I expected' == widget.throb() else 'Fail, bumme
 
           <li><code>ok(condition, actual)</code> - fail if condition is false and print the actual value</li>
 
-          <li><code>equal(actual, expect)</code> - fail if actual value not equal to expected value and print both values</li>
+          <li><code>equal(expect, actual)</code> - fail if actual value not equal to expected value and print both values</li>
 
           <li><code>expect(count)</code> - expect so many assertions and fail if fewer or more are actually executed</li>
         </ul>
@@ -149,7 +149,7 @@ expect(1)
 
 widget = awesome.Widget('This is only a test')
 
-equal(widget.throb(), 'What I expected')</code>
+equal('What I expected', widget.throb())</code>
 </pre>
       </section>
 
@@ -164,7 +164,7 @@ def throbInSomeContext():
 
   widget = awesome.Widget('Some interesting context')
 
-  equal(widget.throb(), 'Expected in this case')
+  equal('Expected in this case', widget.throb())
 
 @test
 def blowUp():

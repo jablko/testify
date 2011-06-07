@@ -4,4 +4,4 @@ from testify import *
 
 expect(1)
 
-equal('Not', 'Equal')
+equal('Equal', 'Not')

@@ -9,4 +9,4 @@ os.chdir(abspath + '/data/clean')
 
 test(lambda: os.chdir(abspath + '/data/dirty'))
 
-equal(os.getcwd(), abspath + '/data/clean')
+equal(abspath + '/data/clean', os.getcwd())

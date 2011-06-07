@@ -2,7 +2,7 @@ import os, re, sys, traceback
 
 __all__ = 'equal', 'expect', 'ok', 'test'
 
-def equal(actual, expect):
+def equal(expect, actual):
   current.count += 1
 
   condition = expect == actual
