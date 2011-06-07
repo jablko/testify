@@ -37,7 +37,9 @@ finally:
   stdout, sys.stdout = sys.stdout, stdout
 
 ok(re.match('''1..1
-not ok 1 'Not' 'Equal'
+not ok 1
+# 'Not'
+# 'Equal'
 ''' + traceback, stdout.getvalue()), stdout.getvalue())
 
 sys.argv = sys.argv[0], 'data/notExpect'

@@ -21,5 +21,7 @@ finally:
   stdout, sys.stdout = sys.stdout, stdout
 
 ok(re.match('''ok 1
-not ok 2 'Not' 'Equal'
+not ok 2
+# 'Not'
+# 'Equal'
 ''' + traceback, stdout.getvalue()), stdout.getvalue())

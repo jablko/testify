@@ -1,4 +1,4 @@
-import os, sys, traceback
+import os, re, sys, traceback
 
 __all__ = 'equal', 'expect', 'ok', 'test'
 
@@ -10,7 +10,11 @@ def equal(actual, expect):
     print 'ok %r' % current.count
 
   else:
-    print 'not ok %r %r %r' % (current.count, actual, expect)
+    print 'not ok %r' % current.count
+    #print re.sub('^', '# ', repr(actual), flags=re.M)
+    print re.compile('^', re.M).sub('# ', repr(actual))
+    #print re.sub('^', '# ', repr(expect), flags=re.M)
+    print re.compile('^', re.M).sub('# ', repr(expect))
 
     traceback.print_stack(sys._getframe().f_back, file=sys.stdout)
 
@@ -28,13 +32,14 @@ def ok(condition, *args):
     print 'ok %r' % current.count
 
   else:
+    print 'not ok %r' % current.count
+
     try:
-      actual, = args
+      #print re.sub('^', '# ', repr(*args), flags=re.M)
+      print re.compile('^', re.M).sub('# ', repr(*args))
 
-      print 'not ok %r %r' % (current.count, actual)
-
-    except ValueError:
-      print 'not ok %r' % current.count
+    except TypeError:
+      pass
 
     traceback.print_stack(sys._getframe().f_back, file=sys.stdout)
 
