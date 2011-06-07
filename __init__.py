@@ -7,10 +7,12 @@ def equal(actual, expect):
 
   condition = expect == actual
   if condition:
-    print 'ok %r' % current.count
+    #print 'ok {!r}'.format(current.count)
+    print 'ok {0!r}'.format(current.count)
 
   else:
-    print 'not ok %r' % current.count
+    #print 'not ok {!r}'.format(current.count)
+    print 'not ok {0!r}'.format(current.count)
     #print re.sub('^', '# ', repr(actual), flags=re.M)
     print re.compile('^', re.M).sub('# ', repr(actual))
     #print re.sub('^', '# ', repr(expect), flags=re.M)
@@ -23,16 +25,19 @@ def equal(actual, expect):
 def expect(count):
   current.expect = count
 
-  print '1..%r' % count
+  #print '1..{!r}'.format(count)
+  print '1..{0!r}'.format(count)
 
 def ok(condition, *args):
   current.count += 1
 
   if condition:
-    print 'ok %r' % current.count
+    #print 'ok {!r}'.format(current.count)
+    print 'ok {0!r}'.format(current.count)
 
   else:
-    print 'not ok %r' % current.count
+    #print 'not ok {!r}'.format(current.count)
+    print 'not ok {0!r}'.format(current.count)
 
     try:
       #print re.sub('^', '# ', repr(*args), flags=re.M)
@@ -69,7 +74,8 @@ class test:
 
     try:
       if self.expect != self.count:
-        print 'FAIL %r %r' % (self.expect, self.count)
+        #print 'FAIL {!r} {!r}'.format(self.expect, self.count)
+        print 'FAIL {0!r} {1!r}'.format(self.expect, self.count)
 
         traceback.print_stack(sys._getframe().f_back, file=sys.stdout)
 
