@@ -51,6 +51,8 @@ class test:
     # Module scope?
     global current
 
+    print '# ' + cbl.__name__
+
     self.count = 0
 
     cwd = os.getcwd()

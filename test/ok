@@ -17,7 +17,8 @@ try:
 finally:
   stdout, sys.stdout = sys.stdout, stdout
 
-equal('''ok 1
+equal('''# <lambda>
+ok 1
 ''', stdout.getvalue())
 
 stdout = sys.stdout
@@ -29,5 +30,6 @@ try:
 finally:
   stdout, sys.stdout = sys.stdout, stdout
 
-ok(re.match('''not ok 1
+ok(re.match('''# <lambda>
+not ok 1
 ''' + traceback, stdout.getvalue()), stdout.getvalue())

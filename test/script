@@ -20,7 +20,8 @@ try:
 finally:
   stdout, sys.stdout = sys.stdout, stdout
 
-ok(re.match('''ok 1
+ok(re.match('''# data/script
+ok 1
 not ok 2
 # 'Not'
 # 'Equal'

@@ -3,4 +3,7 @@
 import sys, testify
 
 for path in sys.argv[1:]:
-  testify.test(lambda: execfile(path, { '__file__': path }))
+  script = lambda: execfile(path, { '__file__': path })
+  script.__name__ = path
+
+  testify.test(script)

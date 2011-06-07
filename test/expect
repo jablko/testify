@@ -21,7 +21,8 @@ try:
 finally:
   stdout, sys.stdout = sys.stdout, stdout
 
-equal('''1..1
+equal('''# data/expectPass
+1..1
 ok 1
 ''', stdout.getvalue())
 
@@ -36,7 +37,8 @@ try:
 finally:
   stdout, sys.stdout = sys.stdout, stdout
 
-ok(re.match('''1..1
+ok(re.match('''# data/expectFail
+1..1
 not ok 1
 # 'Not'
 # 'Equal'
@@ -53,6 +55,7 @@ try:
 finally:
   stdout, sys.stdout = sys.stdout, stdout
 
-ok(re.match('''1..1
+ok(re.match('''# data/notExpect
+1..1
 FAIL 1 0
 ''' + traceback, stdout.getvalue()), stdout.getvalue())

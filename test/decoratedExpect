@@ -20,12 +20,16 @@ try:
 finally:
   stdout, sys.stdout = sys.stdout, stdout
 
-ok(re.match('''1..1
+ok(re.match('''# data/decoratedExpect
+# expectPass
+1..1
 ok 1
+# expectFail
 1..1
 not ok 1
 # 'Not'
 # 'Equal'
-''' + traceback + '''1..1
+''' + traceback + '''# notExpect
+1..1
 FAIL 1 0
 ''', stdout.getvalue()), stdout.getvalue())
