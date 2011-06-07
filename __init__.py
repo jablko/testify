@@ -1,6 +1,6 @@
 import os, sys, traceback
 
-__all__ = ['equal', 'expect', 'ok', 'test']
+__all__ = 'equal', 'expect', 'ok', 'test'
 
 def equal(actual, expect):
   current.count += 1
@@ -41,7 +41,7 @@ def ok(condition, *args):
   return condition
 
 class test:
-  def __init__(self, callable):
+  def __init__(self, cbl):
 
     # Module scope?
     global current
@@ -58,7 +58,7 @@ class test:
 
     current = self
 
-    callable()
+    cbl()
 
     try:
       if self.expect != self.count:

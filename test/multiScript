@@ -9,7 +9,7 @@ traceback = '''(?:  File ".+", line \d+, in .+
 )+'''
 
 os.chdir(os.path.dirname(__file__))
-sys.argv = [sys.argv[0], 'data/script', 'data/script']
+sys.argv = sys.argv[0], 'data/script', 'data/script'
 
 stdout = sys.stdout
 sys.stdout = StringIO()

@@ -10,7 +10,7 @@ traceback = '''(?:  File ".+", line \d+, in .+
 
 os.chdir(os.path.dirname(__file__))
 
-sys.argv = [sys.argv[0], 'data/expectPass']
+sys.argv = sys.argv[0], 'data/expectPass'
 
 stdout = sys.stdout
 sys.stdout = StringIO()
@@ -25,7 +25,7 @@ equal('''1..1
 ok 1
 ''', stdout.getvalue())
 
-sys.argv = [sys.argv[0], 'data/expectFail']
+sys.argv = sys.argv[0], 'data/expectFail'
 
 stdout = sys.stdout
 sys.stdout = StringIO()
@@ -40,7 +40,7 @@ ok(re.match('''1..1
 not ok 1 'Not' 'Equal'
 ''' + traceback, stdout.getvalue()), stdout.getvalue())
 
-sys.argv = [sys.argv[0], 'data/notExpect']
+sys.argv = sys.argv[0], 'data/notExpect'
 
 stdout = sys.stdout
 sys.stdout = StringIO()
