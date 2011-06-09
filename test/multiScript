@@ -23,11 +23,11 @@ finally:
 ok(re.match('''# data/script
 ok 1
 not ok 2
-# 'Not'
-# 'Equal'
+# 'Actual'
+# 'Expect'
 ''' + traceback + '''# data/script
 ok 1
 not ok 2
-# 'Not'
-# 'Equal'
+# 'Actual'
+# 'Expect'
 ''' + traceback, stdout.getvalue()), stdout.getvalue())

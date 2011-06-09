@@ -5,4 +5,4 @@ from testify import *
 @test
 def decorated():
   equal('Equal', 'Equal')
-  equal('Equal', 'Not')
+  equal('Expect', 'Actual')

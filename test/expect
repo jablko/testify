@@ -40,8 +40,8 @@ finally:
 ok(re.match('''# data/expectFail
 1..1
 not ok 1
-# 'Not'
-# 'Equal'
+# 'Actual'
+# 'Expect'
 ''' + traceback, stdout.getvalue()), stdout.getvalue())
 
 sys.argv = sys.argv[0], 'data/notExpect'

@@ -3,4 +3,4 @@
 from testify import *
 
 equal('Equal', 'Equal')
-equal('Equal', 'Not')
+equal('Expect', 'Actual')
