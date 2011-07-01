@@ -76,22 +76,19 @@ def equiv(expect, actual):
 
           return False
 
-        while True:
+        for itm in actual:
           try:
-            condition = equiv(condition, expect.next(), actual.next())
+            condition = equiv(condition, expect.next(), itm)
 
           except StopIteration:
-            break
+            if condition:
+              #print 'not ok {!r}'.format(current.count)
+              print 'not ok {0!r}'.format(current.count)
 
-        for itm in actual:
-          if condition:
-            #print 'not ok {!r}'.format(current.count)
-            print 'not ok {0!r}'.format(current.count)
+            #print re.sub('^', '# ', repr(itm), flags=re.M)
+            print re.compile('^', re.M).sub('# ', repr(itm))
 
-          #print re.sub('^', '# ', repr(itm), flags=re.M)
-          print re.compile('^', re.M).sub('# ', repr(itm))
-
-          condition = False
+            condition = False
 
         for itm in expect:
           if condition:

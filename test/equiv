@@ -99,6 +99,21 @@ stdout = sys.stdout
 sys.stdout = StringIO()
 
 try:
+  test(lambda: equiv(('Equiv', 'Viuqe'), ()))
+
+finally:
+  stdout, sys.stdout = sys.stdout, stdout
+
+ok(re.match('''# <lambda>
+not ok 1
+# 'Equiv'
+# 'Viuqe'
+''' + traceback, stdout.getvalue()), stdout.getvalue())
+
+stdout = sys.stdout
+sys.stdout = StringIO()
+
+try:
   test(lambda: equiv({ 'Equiv': 'Viuqe', 'Viuqe': 'Expect', 'Expect': 'Equiv' }, { 'Equiv': 'Viuqe', 'Viuqe': 'Actual', 'Actual': 'Equiv' }))
 
 finally:
