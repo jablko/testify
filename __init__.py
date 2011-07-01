@@ -25,7 +25,7 @@ def equal(expect, actual):
 def equiv(expect, actual):
   current.count += 1
 
-  def equiv(expect, actual, condition):
+  def equiv(condition, expect, actual):
     if expect is actual:
       return condition
 
@@ -49,7 +49,7 @@ def equiv(expect, actual):
       return False
 
     try:
-      return equiv(expect.__dict__, actual.__dict__, condition)
+      return equiv(condition, expect.__dict__, actual.__dict__)
 
     except AttributeError:
       try:
@@ -78,7 +78,7 @@ def equiv(expect, actual):
 
         while True:
           try:
-            condition = equiv(expect.next(), actual.next(), condition)
+            condition = equiv(condition, expect.next(), actual.next())
 
           except StopIteration:
             break
@@ -106,7 +106,7 @@ def equiv(expect, actual):
         return condition
 
       for key in set(expect) & set(actual):
-        condition = equiv(expect[key], actual[key], condition)
+        condition = equiv(condition, expect[key], actual[key])
 
       for key in set(actual) - set(expect):
         if condition:
@@ -130,7 +130,7 @@ def equiv(expect, actual):
 
       return condition
 
-  condition = equiv(expect, actual, True)
+  condition = equiv(True, expect, actual)
   if condition:
     #print 'ok {!r}'.format(current.count)
     print 'ok {0!r}'.format(current.count)
