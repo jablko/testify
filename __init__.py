@@ -36,7 +36,7 @@ def equiv(expect, actual):
     # What about a = [], a.append(a), b = [], b.append(b), equiv(a, b)?  Maybe
     # they're equivalent because they both reference themselves? but then 'a'
     # and 'b' - and hence all equal length strings - are equivalent : (
-    if isinstance(actual, str) or not isinstance(actual, type(expect)):
+    if isinstance(expect, str) or isinstance(actual, str):
       if condition:
         #print 'not ok {!r}'.format(current.count)
         print 'not ok {0!r}'.format(current.count)
