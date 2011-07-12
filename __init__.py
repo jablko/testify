@@ -61,8 +61,7 @@ def equiv(expect, actual):
 
       except TypeError:
         try:
-          expect = iter(expect)
-          actual = iter(actual)
+          expect, actual = iter(expect), iter(actual)
 
         except TypeError:
           if condition:

@@ -141,3 +141,18 @@ not ok 1
 # 'Actual'
 # 'Expect'
 ''' + traceback, stdout.getvalue()), stdout.getvalue())
+
+stdout = sys.stdout
+sys.stdout = StringIO()
+
+try:
+  test(lambda: equiv(('Equiv',), None))
+
+finally:
+  stdout, sys.stdout = sys.stdout, stdout
+
+ok(re.match('''# <lambda>
+not ok 1
+# None
+# \('Equiv',\)
+''' + traceback, stdout.getvalue()), stdout.getvalue())
