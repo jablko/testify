@@ -26,7 +26,7 @@ def equiv(expect, actual):
   current.count += 1
 
   def equiv(condition, expect, actual):
-    if expect is actual:
+    if expect == actual:
       return condition
 
     # Strings are recursive, 'a' == 'a'[0] == 'a'[0][0], etc. but equivalent
