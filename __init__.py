@@ -7,12 +7,10 @@ def equal(expect, actual):
 
   condition = expect == actual
   if condition:
-    #print 'ok {!r}'.format(current.count)
-    print 'ok {0!r}'.format(current.count)
+    print 'ok ' + repr(current.count)
 
   else:
-    #print 'not ok {!r}'.format(current.count)
-    print 'not ok {0!r}'.format(current.count)
+    print 'not ok ' + repr(current.count)
     #print re.sub('^', '# ', repr(actual), flags=re.M)
     print re.compile('^', re.M).sub('# ', repr(actual))
     #print re.sub('^', '# ', repr(expect), flags=re.M)
@@ -38,8 +36,7 @@ def equiv(expect, actual):
     # and 'b' - and hence all equal length strings - are equivalent : (
     if isinstance(expect, str) or isinstance(actual, str):
       if condition:
-        #print 'not ok {!r}'.format(current.count)
-        print 'not ok {0!r}'.format(current.count)
+        print 'not ok ' + repr(current.count)
 
       #print re.sub('^', '# ', repr(actual), flags=re.M)
       print re.compile('^', re.M).sub('# ', repr(actual))
@@ -65,8 +62,7 @@ def equiv(expect, actual):
 
         except TypeError:
           if condition:
-            #print 'not ok {!r}'.format(current.count)
-            print 'not ok {0!r}'.format(current.count)
+            print 'not ok ' + repr(current.count)
 
           #print re.sub('^', '# ', repr(actual), flags=re.M)
           print re.compile('^', re.M).sub('# ', repr(actual))
@@ -81,8 +77,7 @@ def equiv(expect, actual):
 
           except StopIteration:
             if condition:
-              #print 'not ok {!r}'.format(current.count)
-              print 'not ok {0!r}'.format(current.count)
+              print 'not ok ' + repr(current.count)
 
             #print re.sub('^', '# ', repr(itm), flags=re.M)
             print re.compile('^', re.M).sub('# ', repr(itm))
@@ -91,8 +86,7 @@ def equiv(expect, actual):
 
         for itm in expect:
           if condition:
-            #print 'not ok {!r}'.format(current.count)
-            print 'not ok {0!r}'.format(current.count)
+            print 'not ok ' + repr(current.count)
 
           #print re.sub('^', '# ', repr(itm), flags=re.M)
           print re.compile('^', re.M).sub('# ', repr(itm))
@@ -106,8 +100,7 @@ def equiv(expect, actual):
 
       for key in set(actual) - set(expect):
         if condition:
-          #print 'not ok {!r}'.format(current.count)
-          print 'not ok {0!r}'.format(current.count)
+          print 'not ok ' + repr(current.count)
 
         #print re.sub('^', '# ', repr(actual[key]), flags=re.M)
         print re.compile('^', re.M).sub('# ', repr(actual[key]))
@@ -116,8 +109,7 @@ def equiv(expect, actual):
 
       for key in set(expect) - set(actual):
         if condition:
-          #print 'not ok {!r}'.format(current.count)
-          print 'not ok {0!r}'.format(current.count)
+          print 'not ok ' + repr(current.count)
 
         #print re.sub('^', '# ', repr(expect[key]), flags=re.M)
         print re.compile('^', re.M).sub('# ', repr(expect[key]))
@@ -128,8 +120,7 @@ def equiv(expect, actual):
 
   condition = equiv(True, expect, actual)
   if condition:
-    #print 'ok {!r}'.format(current.count)
-    print 'ok {0!r}'.format(current.count)
+    print 'ok ' + repr(current.count)
 
   else:
     traceback.print_stack(sys._getframe().f_back, file=sys.stdout)
@@ -139,19 +130,16 @@ def equiv(expect, actual):
 def expect(count):
   current.expect = count
 
-  #print '1..{!r}'.format(count)
-  print '1..{0!r}'.format(count)
+  print '1..' + repr(count)
 
 def ok(condition, *args):
   current.count += 1
 
   if condition:
-    #print 'ok {!r}'.format(current.count)
-    print 'ok {0!r}'.format(current.count)
+    print 'ok ' + repr(current.count)
 
   else:
-    #print 'not ok {!r}'.format(current.count)
-    print 'not ok {0!r}'.format(current.count)
+    print 'not ok ' + repr(current.count)
 
     try:
       #print re.sub('^', '# ', repr(*args), flags=re.M)
